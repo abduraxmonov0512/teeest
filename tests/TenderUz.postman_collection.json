@@ -1,0 +1,6225 @@
+{
+	"info": {
+		"_postman_id": "01c4da81-331c-4cec-b2b5-1354eaa79a48",
+		"name": "TenderUz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dict",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"\r",
+											"    pm.globals.set(\"token\", pm.response.json().access_token);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"grant_type\": \"password\",\r\n    \"client_id\": 1,\r\n    \"login\": \"inurilloev313+2@gmail.com\",\r\n    \"password\": \"Izzat123.\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/oauth/token",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								},
+								"description": "Авторизация юзера"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_country",
+					"item": [
+						{
+							"name": "ref_country",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_country\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу ОКСМ"
+				},
+				{
+					"name": "ref_customs_fee",
+					"item": [
+						{
+							"name": "ref_custom_fee",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_customs_fee\",\r\n    \"params\": {\r\n    }\r\n} "
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу Классификатор таможенных платеже"
+				},
+				{
+					"name": "ref_transaction_nature",
+					"item": [
+						{
+							"name": "ref_transaction_nature_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].code).to.eql(\"03\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_transaction_nature\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\":2\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_transaction_nature_search",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_transaction_nature\",\r\n        \"op\": \"read\",\r\n        \"query\": \"товаров\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_transport",
+					"item": [
+						{
+							"name": "ref_transport",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_transport\",\r\n        \"op\": \"read\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								},
+								"description": "Выдача записей по каталогу Классификатор видов транспорта"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_company_type",
+					"item": [
+						{
+							"name": "ref_company_type",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_company_type\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу КОПФ"
+				},
+				{
+					"name": "ref_tnved",
+					"item": [
+						{
+							"name": "ref_tnved_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your id equals to 2\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(2);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_tnved\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 2\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_tnved_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Продукты\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_tnved\",\r\n        \"op\": \"read\",\r\n        \"query\": \"Продукты\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу ТН ВЕД"
+				},
+				{
+					"name": "ref_economic_acivity_type",
+					"item": [
+						{
+							"name": "ref_economic_acivity_type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_economic_acivity_type\",\r\n        \"op\": \"read\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_economic_acivity_type_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(2);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_economic_acivity_type\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 2\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_economic_activity_type_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches string\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"прочих\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_economic_acivity_type\",\r\n        \"op\": \"read\",\r\n        \"query\": \"прочих\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу ОКЭД-2"
+				},
+				{
+					"name": "ref_team_status",
+					"item": [
+						{
+							"name": "ref_team_status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_team_status\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник статусов компаний"
+				},
+				{
+					"name": "ref_dest",
+					"item": [
+						{
+							"name": "ref_dest",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 12,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_dest\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник направлений"
+				},
+				{
+					"name": "ref_locale",
+					"item": [
+						{
+							"name": "ref_locale",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 12,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_locale\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник локалей"
+				},
+				{
+					"name": "ref_unit",
+					"item": [
+						{
+							"name": "ref_unit",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_unit\",\r\n        \"op\": \"read\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник единиц измерения",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "ref_currency",
+					"item": [
+						{
+							"name": "ref_currency",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 12,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_currency\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_currency_full_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"code equals 860\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].code).to.eql(\"860\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_currency_full\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"code\": \"860\"\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_currency_full_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_currency_full\",\r\n        \"op\": \"read\",\r\n        \"query\": \"Узбекский\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник валют"
+				},
+				{
+					"name": "ref_incoterms",
+					"item": [
+						{
+							"name": "ref_incoterms_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"code equals FCA\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].code).to.eql(\"FCA\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_incoterms\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"code\": \"FCA\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_incoterms_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches Франко\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Франко\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_incoterms\",\r\n        \"op\": \"read\",\r\n        \"query\": \"франко\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу Инкотермс"
+				},
+				{
+					"name": "ref_product_movement_feature",
+					"item": [
+						{
+							"name": "ref_product_movement_feature",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_product_movement_featur\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_product_movement_feature_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals to 8\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(8);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_product_movement_feature\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 8\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_product_movement_feature_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches фонд\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"фонд\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_product_movement_feature\",\r\n        \"op\": \"read\",\r\n        \"query\": \"фонд\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу Справочник особенностей перемещения"
+				},
+				{
+					"name": "ref_tax_office",
+					"item": [
+						{
+							"name": "ref_tax_office_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id value is 0301\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].code).to.eql('0301');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_tax_office\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": \"0301\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_tax_office_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches Ханабад\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Ханабад\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_tax_office\",\r\n        \"op\": \"read\",\r\n        \"query\": \"Ханабад\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу ГНИ"
+				},
+				{
+					"name": "ref_bank_mfo",
+					"item": [
+						{
+							"name": "ref_bank_mfo_reach",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches ХАЛК\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"ХАЛК\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_bank_mfo\",\r\n        \"op\": \"read\",\r\n        \"query\": \"ХАЛК\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_bank_mfo_filter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"code equals 00566\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].code).to.eql('00566');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_bank_mfo\",\r\n        \"op\": \"read\",\r\n        \"filters\": {\r\n            \"id\": \"00566\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу МФО"
+				},
+				{
+					"name": "ref_free_economic_zone",
+					"item": [
+						{
+							"name": "ref_free_economic_zone",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_free_economic_zone\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник свободных экономических зон"
+				},
+				{
+					"name": "ref_status_tender",
+					"item": [
+						{
+							"name": "ref_status_tender",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_status_tender\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_status_tender_public",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_status_tender\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_status_tender_owner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"parent_id\": 1,\r\n    \"method\": \"ref_status_tender\",\r\n    \"params\": {\r\n      \"scope\": \"owner\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_status_tender_owner Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"parent_id\": 1,\r\n    \"method\": \"ref_status_tender\",\r\n    \"params\": {\r\n      \"scope\": \"participant\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник статусов тендеров"
+				},
+				{
+					"name": "ref_expenses",
+					"item": [
+						{
+							"name": "ref_expenses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"parent_id\": 1,\r\n  \"method\": \"ref_expense_item\",\r\n  \"params\": {\r\n    \r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_expenses_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"parent_id\": 1,\r\n  \"method\": \"ref_expense_item\",\r\n  \"params\": {\r\n    \r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_expenses_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches Электрон\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Электрон\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_expenses\",\r\n        \"op\": \"read\",\r\n        \"query\": \"Электрон\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Список статей расходов"
+				},
+				{
+					"name": "ref_catalog_category",
+					"item": [
+						{
+							"name": "ref_catalog_category",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_catalog_category\",\r\n    \"params\": {\r\n        \r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по категориям товаров,услуг,работ"
+				},
+				{
+					"name": "ref_bank_account_type",
+					"item": [
+						{
+							"name": "ref_bank_account_type",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"parent_id\": 1,\r\n  \"method\": \"ref_bank_account_type\",\r\n  \"params\": {\r\n    \r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_bank_account_type_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals 2\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(2);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_bank_account_type\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 2\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_bank_account_type_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches Основной\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Основной\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_bank_account_type\",\r\n        \"op\": \"read\",\r\n        \"query\": \"Основной\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник типов счетов",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "ref_soogu",
+					"item": [
+						{
+							"name": "ref_soogu",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"ref_soogu\",\r\n  \"params\": {\r\n   \r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc?",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_soogu_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"ref_soogu\",\r\n  \"params\": {\r\n   \r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc?",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_soogu_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Body matches Органы\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Органы\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_soogu\",\r\n        \"op\": \"read\",\r\n        \"query\": \"Органы\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc?",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник СООГУ"
+				},
+				{
+					"name": "ref_bad_suppliers",
+					"item": [
+						{
+							"name": "ref_bad_suppliers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"id\": 1,\r\n  \"method\": \"ref_bad_suppliers\",\r\n  \"params\": {\r\n    \"offset\": 2\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по каталогу Справочник недобросовестных поставщик"
+				},
+				{
+					"name": "ref_area",
+					"item": [
+						{
+							"name": "ref_area",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"id\": 1,\r\n    \"method\": \"ref_area\",\r\n    \"params\": {\r\n        \"parent_id\": \"1.5.6\",\r\n        \"limit\": 4,\r\n        \"offset\": 3\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник регионов"
+				},
+				{
+					"name": "ref_country",
+					"item": [
+						{
+							"name": "ref_country_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals 2\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(2);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_country\",\r\n        \"op\": \"read\",\r\n        \"filters\": {\r\n            \"id\": 2\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_country_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"АЛБАНИЯ\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"АЛБАНИЯ\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_country\",\r\n        \"op\": \"read\",\r\n        \"query\": \"АЛБАНИЯ\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Выдача записей по справочнику стран"
+				},
+				{
+					"name": "ref_single_supplier_directory",
+					"item": [
+						{
+							"name": "ref_single_supplier_directory_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals 1\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(1);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_single_supplier_directory\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 1\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_single_supplier_directory_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches Ўзтрансгаз\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"UZ_NAME\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_single_supplier_directory\",\r\n        \"op\": \"read\",\r\n        \"query\": \"UZ_NAME\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_insurance",
+					"item": [
+						{
+							"name": "ref_insurance_read",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals to 2\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(2);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_insurance\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 2\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_insurance_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches застрахованы\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"застрахованы\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_insurance\",\r\n        \"op\": \"read\",\r\n        \"query\": \"застрахованы\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник типов страховок"
+				},
+				{
+					"name": "ref_type_business",
+					"item": [
+						{
+							"name": "ref_type_business_filters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals to 2\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(2);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_type_business\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 2\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_type_business_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches резиденты\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"резиденты\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_type_business\",\r\n        \"op\": \"read\",\r\n        \"query\": \"резиденты\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник типов юридических лиц"
+				},
+				{
+					"name": "ref_type_deposit",
+					"item": [
+						{
+							"name": "ref_type_deposit",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_type_deposit\",\r\n        \"op\": \"read\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_type_deposit_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches сумма\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"сумма\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_type_deposit\",\r\n        \"op\": \"read\",\r\n        \"query\": \"сумма\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник типов депозитов"
+				},
+				{
+					"name": "ref_type_periodicity",
+					"item": [
+						{
+							"name": "ref_type_periodicity_filter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals 2\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(2);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_type_periodicity\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 2\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_type_periodicity_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches поставка\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"поставка\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_type_periodicity\",\r\n        \"op\": \"read\",\r\n        \"query\": \"поставка\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник типов сроков поставки"
+				},
+				{
+					"name": "ref_method_marks",
+					"item": [
+						{
+							"name": "ref_method_marks_filters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals rating\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(\"rating\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_method_marks\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": \"rating\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_method_marks_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches метод\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"метод\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_method_marks\",\r\n        \"op\": \"read\",\r\n        \"query\": \"метод\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Справочник методов оценки",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "ref_status_error",
+					"item": [
+						{
+							"name": "ref_status_error_filters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals done\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(\"done\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_status_error\",\r\n        \"op\": \"read\",\r\n        \"filters\": {\r\n          \"id\": \"done\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_status_error_query",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches Завершена\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Завершена\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_status_error\",\r\n        \"op\": \"read\",\r\n        \"query\": \"Завершена\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_brokers",
+					"item": [
+						{
+							"name": "ref_brokers_filters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_brokers\",\r\n        \"op\": \"read\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_special_suppliers",
+					"item": [
+						{
+							"name": "ref_special_suppliers_filter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id equals 1\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(1);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_special_suppliers\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": 1\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_special_suppliers_search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches Ўзбекистон\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Ўзбекистон\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_special_suppliers\",\r\n        \"op\": \"read\",\r\n        \"query\": \"Ўзбекистон\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_status_procedure",
+					"item": [
+						{
+							"name": "ref_status_procedure_public",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n      \"method\": \"ref_status\",\r\n    \"params\": {\r\n        \"scope\": \"public\"\r\n        \r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_status_procedure_owner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n      \"method\": \"ref_status\",\r\n    \"params\": {\r\n        \"scope\": \"owner\"\r\n        \r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_status_procedure_participiant",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n      \"method\": \"ref_status\",\r\n    \"params\": {\r\n        \"scope\": \"participant\"\r\n        \r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_unit",
+					"item": [
+						{
+							"name": "ref_unit",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_unit\",\r\n        \"op\": \"read\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_billing_operations",
+					"item": [
+						{
+							"name": "ref_billing_operations",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_billing_operations\",\r\n        \"op\": \"read\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_categories",
+					"item": [
+						{
+							"name": "create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_categories\",\r\n        \"op\": \"create\",\r\n        \"data\": {\r\n            \"category_type\": 1,\r\n            \"name\": \"postman\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"\r",
+											"    pm.globals.set(\"categories_id\", pm.response.json().result[0].id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_categories\",\r\n        \"op\": \"read\",\r\n        \"query\": \"postman\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"check categories id\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.result[0].id).to.eql(pm.globals.get(\"categories_id\"));\r",
+											"\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_categories\",\r\n        \"op\": \"read\",\r\n        \"filters\":{\r\n          \"id\": \"{{categories_id}}\"\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_categories\",\r\n        \"op\": \"update\",\r\n        \"data\": {\r\n            \"id\": \"{{categories_id}}\",\r\n            \"name\": \"postman2\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_categories\",\r\n        \"op\": \"delete\",\r\n        \"data\":{\r\n          \"id\": \"{{categories_id}}\"\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_products",
+					"item": [
+						{
+							"name": "create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_products\",\r\n        \"op\": \"create\",\r\n        \"data\": {\r\n          \"name\": \"postman\",\r\n          \"category_id\": \"{{categories_id}}\"\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.globals.set(\"product_id\", pm.response.json().result[0].id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_products\",\r\n        \"op\": \"read\",\r\n        \"query\": \"postman\"\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "filters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body matches postman\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"postman\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_products\",\r\n        \"op\": \"read\",\r\n        \"filters\": {\r\n          \"category_id\": \"{{categories_id}}\"\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_products\",\r\n        \"op\": \"update\",\r\n        \"data\": {\r\n          \"name\": \"postman2\",\r\n          \"category_id\": \"{{categories_id}}\",\r\n          \"id\": \"{{product_id}}\"\r\n\r\n        }\r\n    }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"jsonrpc\": \"2.0\",\r\n  \"method\": \"ref\",\r\n  \"params\": {\r\n    \"ref\": \"ref_products\",\r\n        \"op\": \"delete\",\r\n    \"data\": {\r\n      \"id\": \"{{product_id}}\"\r\n    }\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_procedures_em",
+					"item": [
+						{
+							"name": "ref_procedures_em",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_online_shop_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 6,\r\n        \"offset\": 0,\r\n        \"filters\": {}\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_procedures_em_with_filter_region",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"testing restr EM with filter region\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    for(let i = 0; i < jsonData.result.length; i++){ \r",
+											"        pm.expect(jsonData.result[i].delivery_regions[0]).to.be.oneOf([\"33\", \"33.2152\"]);\r",
+											"    }\r",
+											" \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_online_shop_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 10,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"delivery_regions\": [\r\n                \"33.2152\"\r\n            ]\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_procedures_em_with_full_filter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"testing restr EM with full filter\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    for(let i = 0; i < jsonData.result.length; i++){ \r",
+											"        pm.expect(jsonData.result[i].delivery_regions[0]).to.be.oneOf([\"33\", \"33.2152\"]);\r",
+											"        pm.expect(jsonData.result[i].__debug__.category_id).to.equal(\"061c37f0-55d0-466e-95dd-ad304da0fad5\");\r",
+											"        pm.expect(jsonData.result[i].__debug__.product_id).to.equal(\"1530e847-d493-44aa-820e-dc9549f1b8d6\");\r",
+											"    }\r",
+											"    \r",
+											"    \r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_online_shop_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 10,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"category_id\": \"061c37f0-55d0-466e-95dd-ad304da0fad5\",\r\n            \"product_id\": \"1530e847-d493-44aa-820e-dc9549f1b8d6\",\r\n            \"country\": [\r\n                \"031\"\r\n            ],\r\n            \"max_price\": 10000000,\r\n            \"min_amount\": 1,\r\n            \"max_amount\": 1000,\r\n            \"delivery_regions\": [\r\n                \"33.2152\"\r\n            ]\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_faqs",
+					"item": [
+						{
+							"name": "ref_faqs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"common_ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_faqs\",\r\n        \"op\": \"read\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"locale\": \"ru\",\r\n            \"show\": true\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get_current_time",
+					"item": [
+						{
+							"name": "get_current_time",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"get_current_time\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get_activity_stats",
+					"item": [
+						{
+							"name": "get_activity_stats",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"get_activity_stats\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "tree_products",
+					"item": [
+						{
+							"name": "tree_products",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"tree_products\",\r\n    \"params\": {\r\n        \"parent_id\": \"0\",\r\n        \"limit\": 51,\r\n        \"offset\": 0\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tree_products_with_parent_id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"id must have parent id\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"0.24dca85a-2b2d-4b1b-9fa8-980f848a5cde\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authorization",
+										"value": "Bearer"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"tree_products\",\r\n    \"params\": {\r\n        \"parent_id\": \"0.24dca85a-2b2d-4b1b-9fa8-980f848a5cde\",\r\n        \"limit\": 51,\r\n        \"offset\": 0\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_reduction_object_public",
+					"item": [
+						{
+							"name": "ref_reduction_object_public",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_reduction_object_public\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {},\r\n        \"op\": \"read\"\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PurchaseList",
+			"item": [
+				{
+					"name": "authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"token\", pm.response.json().access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"password\",\r\n    \"client_id\": 1,\r\n    \"login\": \"inurilloev313+2@gmail.com\",\r\n    \"password\": \"Izzat123.\"\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/oauth/token",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_schedule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"schedule_id\", pm.response.json().result.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_position\",\r\n        \"op\": \"create\",\r\n        \"data\": {\r\n            \"name\": \"postman\",\r\n            \"year\": 2222,\r\n            \"month_begin\": 2,\r\n            \"month_end\": 3,\r\n            \"currency\": \"UZS\",\r\n            \"type\": \"position\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						},
+						"description": "Создание план-графика"
+					},
+					"response": []
+				},
+				{
+					"name": "get_schedule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches 2222\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"2222\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_position\",\r\n        \"op\": \"read\",\r\n        \"filters\": {\r\n            \"id\": \"{{schedule_id}}\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "schedule_goods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"goods_id\", pm.response.json().result.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_goods\",\r\n        \"op\": \"create\",\r\n        \"data\": {\r\n            \"product_id\": \"b35b6dfc-0e71-4644-bac8-b1625e1beace\",\r\n            \"amount\": 1,\r\n            \"unit\": \"sht\",\r\n            \"price\": 111,\r\n            \"positions_id\": \"{{schedule_id}}\",\r\n            \"type_item\": 0\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read_schedule_goods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_goods\",\r\n        \"op\": \"read\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"positions_id\": \"{{schedule_id}}\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Получение план-графика"
+					},
+					"response": []
+				},
+				{
+					"name": "read_ref_products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"op\": \"read\",\r\n        \"ref\": \"ref_products\",\r\n        \"filters\": {\r\n            \"id\": [\r\n                \"b35b6dfc-0e71-4644-bac8-b1625e1beace\"\r\n            ]\r\n        },\r\n        \"limit\": 1\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						},
+						"description": "Создание версии план-графика"
+					},
+					"response": []
+				},
+				{
+					"name": "delete_schedule_goods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_goods\",\r\n        \"op\": \"delete\",\r\n        \"filters\": {\r\n            \"id\": \"{{goods_id}}\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						},
+						"description": "Удаления товара"
+					},
+					"response": []
+				},
+				{
+					"name": "update_schedule_position",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_position\",\r\n        \"op\": \"update\",\r\n        \"filters\": {\r\n            \"id\": \"{{schedule_id}}\"\r\n        },\r\n        \"data\": {\r\n            \"currency\": \"EUR\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_schedule_position",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_position\",\r\n        \"op\": \"delete\",\r\n        \"filters\": {\r\n            \"id\": \"{{schedule_id}}\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						},
+						"description": "Удаления плана графика"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auction",
+			"item": [
+				{
+					"name": "authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"token\", pm.response.json().access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"password\",\r\n    \"client_id\": 1,\r\n    \"login\": \"inurilloev313+2@gmail.com\",\r\n    \"password\": \"Izzat123.\"\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/oauth/token",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_schedule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"schedule_id\", pm.response.json().result.id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_position\",\r\n        \"op\": \"create\",\r\n        \"data\": {\r\n            \"name\": \"postmanTest\",\r\n            \"year\": 2021,\r\n            \"month_begin\": 2,\r\n            \"month_end\": 11,\r\n            \"currency\": \"UZS\",\r\n            \"type\": \"position\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_goods\",\r\n        \"op\": \"create\",\r\n        \"data\": {\r\n            \"product_id\": \"57fae9c8-94c9-4e33-958d-22f0866dc6ce\",\r\n            \"amount\": 10,\r\n            \"unit\": \"sht\",\r\n            \"price\": 1000000,\r\n            \"positions_id\": \"{{schedule_id}}\",\r\n            \"type_item\": 0\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_auction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"create_procedure\",\r\n    \"params\": {\r\n        \"type\": \"reduction\",\r\n        \"object\": {\r\n            \"type\": \"new_purchase\",\r\n            \"id\": \"{{schedule_id}}\"\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/urpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"urpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ref_status_reduction",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_status_reduction\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"scope\": \"private\"\r\n        },\r\n        \"op\": \"read\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ref_reduction_object",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_reduction_object\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {},\r\n        \"op\": \"read\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ref_reduction_object_moderated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_reduction_object\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"relation\": \"moderator\",\r\n            \"status\": \"moderated\"\r\n        },\r\n        \"op\": \"read\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ref_reduction_object_rejected",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_reduction_object\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"relation\": \"moderator\",\r\n            \"status\": \"rejected\"\r\n        },\r\n        \"op\": \"read\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ref_reduction_object_publicated",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_reduction_object\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"relation\": \"moderator\",\r\n            \"status\": \"publicated\"\r\n        },\r\n        \"op\": \"read\"\r\n    }\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ref_filter_DSL",
+			"item": [
+				{
+					"name": "authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.globals.set(\"token\", pm.response.json().access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"password\",\r\n    \"client_id\": 1,\r\n    \"login\": \"inurilloev313+2@gmail.com\",\r\n    \"password\": \"Izzat123.\"\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/oauth/token",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "case_1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Status equals to wait_winner_sign id less 1851 great than 1864\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var flag = false;\r",
+									"     for(let i = 0; i < jsonData.result.length; i++ ){\r",
+									"        console.log(jsonData.result[i].id);\r",
+									"        if(!(jsonData.result[i].status == \"wait_winner_sign\" &&  ((jsonData.result[i].id <= 1864) && jsonData.result[i].id > 1851))){\r",
+									"            flag = true;\r",
+									"        }\r",
+									"        pm.expect(flag).equal(true);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"jsonrpc\": \"2.0\",\r\n\t\"method\": \"contract_ref\",\r\n\t\"params\": {\r\n\t\t\"ref\": \"contract_private_registry\",\r\n\t\t\"op\": \"read\",\r\n\t\t\"filter_query\": {\r\n\t\t\t\"$NOT\": {\r\n                \"$AND\":{\r\n                    \"id\": {\"$AND\": {\"$GT\": 1851, \"$LTE\": 1864}},\r\n\t\t\t    \t\"status\": {\"$EQ\": \"wait_winner_sign\"}\r\n                }\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "case_2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    for(let i = 0; i < jsonData.result.length; i++ ){\r",
+									"        console.log(jsonData.result[i].status);\r",
+									"        pm.expect(jsonData.result[i].status).to.not.equal(\"wait_winner_sign\");\r",
+									"    }\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"jsonrpc\": \"2.0\",\r\n\t\"method\": \"contract_ref\",\r\n\t\"params\": {\r\n\t\t\"ref\": \"contract_private_registry\",\r\n\t\t\"op\": \"read\",\r\n\t\t\"filter_query\": {\r\n\t\t\t\"$NOT\": {\r\n                \"$AND\":{\r\n\t\t\t    \t\"status\": {\"$EQ\": \"wait_winner_sign\"}\r\n                }\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "case_3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    for(let i = 0; i < jsonData.result.length; i++ ){\r",
+									"        \r",
+									"       pm.expect(jsonData.result[i].status).to.equal(\"wait_winner_sign\");\r",
+									"       pm.expect(jsonData.result[i].id).to.be.above(1851).and.to.be.below(1865);\r",
+									"    }\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"jsonrpc\": \"2.0\",\r\n\t\"method\": \"contract_ref\",\r\n\t\"params\": {\r\n\t\t\"ref\": \"contract_private_registry\",\r\n\t\t\"op\": \"read\",\r\n\t\t\"filter_query\": {\r\n\t\t\t\"$AND\":{\r\n                    \"id\": {\"$AND\": {\"$GT\": 1851, \"$LTE\": 1864}},\r\n\t\t\t    \t\"status\": {\"$EQ\": \"wait_winner_sign\"}\r\n                }\r\n\t\t}\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "case_4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status equals to wait_winner_sign id less 1851 great than 1864\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var flag = false;\r",
+									"     for(let i = 0; i < jsonData.result.length; i++ ){\r",
+									"        console.log(jsonData.result[i].id);\r",
+									"        if(!(jsonData.result[i].status == \"org_rejected\" ||  ((jsonData.result[i].id <= 1864) && jsonData.result[i].id > 1851))){\r",
+									"            flag = true;\r",
+									"        }\r",
+									"        pm.expect(flag).equal(true);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"jsonrpc\": \"2.0\",\r\n\t\"method\": \"contract_ref\",\r\n\t\"params\": {\r\n\t\t\"ref\": \"contract_private_registry\",\r\n\t\t\"op\": \"read\",\r\n\t\t\"filter_query\": {\r\n\t\t\t\"$NOT\": {\r\n                \"$OR\":{\r\n                    \"id\": {\"$AND\": {\"$GT\": 1851, \"$LTE\": 1864}},\r\n\t\t\t    \t\"status\": {\"$EQ\": \"org_rejected\"}\r\n                }\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Реестр_Публичный",
+			"item": [
+				{
+					"name": "ref_contest_public",
+					"item": [
+						{
+							"name": "ref_contest_public",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_contest_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {}\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_contest_public_filter_open",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    for(let i = 0; i < jsonData.result.length; i++){\r",
+											"        pm.expect(jsonData.result[i].status).to.eql(\"open\")\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_contest_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"status\": [\r\n                \"open\"\r\n            ]\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_tender_public",
+					"item": [
+						{
+							"name": "ref_tender_public",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_tender_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {}\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_tender_public_filter_open",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    for(let i = 0; i < jsonData.result.length; i++){\r",
+											"        pm.expect(jsonData.result[i].status).to.eql(\"open\")\r",
+											"    }\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_tender_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 51,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"status\": [\r\n                \"open\"\r\n            ]\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_online_shop_public",
+					"item": [
+						{
+							"name": "ref_online_shop_public",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_online_shop_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 10,\r\n        \"offset\": 0,\r\n        \"filters\": {}\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Реестр_Приватный",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"\r",
+											"    pm.globals.set(\"token\", pm.response.json().access_token);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"grant_type\": \"password\",\r\n    \"client_id\": 1,\r\n    \"login\": \"inurilloev313+2@gmail.com\",\r\n    \"password\": \"Izzat123.\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "{{domenTest}}/oauth/token",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								},
+								"description": "Авторизация юзера"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ref_online_shop_public_national",
+					"item": [
+						{
+							"name": "ref_online_shop_public_national",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"ref\": \"ref_online_shop_public\",\r\n        \"op\": \"read\",\r\n        \"limit\": 10,\r\n        \"offset\": 0,\r\n        \"filters\": {\r\n            \"is_national\": true\r\n        }\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get_company_users",
+					"item": [
+						{
+							"name": "get_company_users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"get_company_users\",\r\n    \"params\": {\r\n        \"limit\": 51,\r\n        \"offset\": 0\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Реквизиты",
+					"item": [
+						{
+							"name": "get_company_fields",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"get_company_fields\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_company_adress",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"get_company_address\",\r\n    \"params\": {}\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_company_bank_accounts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"get_company_bank_accounts\",\r\n    \"params\": {\r\n        \"limit\": 51,\r\n        \"offset\": 0\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_company_type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"op\": \"read\",\r\n        \"ref\": \"ref_company_type\",\r\n        \"filters\": {\r\n            \"code\": \"152\"\r\n        },\r\n        \"limit\": 1\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_economic_acivity_type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"op\": \"read\",\r\n        \"ref\": \"ref_economic_acivity_type\",\r\n        \"filters\": {\r\n            \"code\": \"42\"\r\n        },\r\n        \"limit\": 1\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_soogu",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"op\": \"read\",\r\n        \"ref\": \"ref_soogu\",\r\n        \"filters\": {\r\n            \"code\": \"1008\"\r\n        },\r\n        \"limit\": 1\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ref_bank_mfo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref\",\r\n    \"params\": {\r\n        \"op\": \"read\",\r\n        \"ref\": \"ref_bank_mfo\",\r\n        \"filters\": {\r\n            \"id\": [\r\n                \"00586\"\r\n            ]\r\n        },\r\n        \"limit\": 1\r\n    }\r\n}"
+								},
+								"url": {
+									"raw": "{{domenTest}}/rpc",
+									"host": [
+										"{{domenTest}}"
+									],
+									"path": [
+										"rpc"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ПГЗ_бюджетники",
+			"item": [
+				{
+					"name": "authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"    pm.globals.set(\"token\", pm.response.json().access_token);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"password\",\r\n    \"client_id\": 1,\r\n    \"login\": \"inurilloev313+60@gmail.com\",\r\n    \"password\": \"Izzat123.\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{domenTest}}/oauth/token",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						},
+						"description": "Авторизация юзера"
+					},
+					"response": []
+				},
+				{
+					"name": "schedule_isugf_goods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"   \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"ref_schedule\",\r\n    \"params\": {\r\n        \"ref\": \"schedule_isugf_goods\",\r\n        \"op\": \"read\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{domenTest}}/rpc",
+							"host": [
+								"{{domenTest}}"
+							],
+							"path": [
+								"rpc"
+							]
+						},
+						"description": "Авторизация юзера"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token1",
+			"value": ""
+		},
+		{
+			"key": "domenTest",
+			"value": "http://192.168.122.210:4000"
+		},
+		{
+			"key": "bleyd",
+			"value": ""
+		}
+	]
+}

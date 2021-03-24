@@ -1,0 +1,16 @@
+{
+  "name": "postman_tests",
+  "version": "1.0.0",
+  "description": "Postman api autotests",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "run-test": "newman run tests/TenderUz.postman_collection.json"
+  },
+  "author": "Rustam Abduraxmonov",
+  "dependencies": {
+    "newman": "^5.2.0",
+    "newman-reporter-htmlextra": "^1.19.4"
+  }
+}
